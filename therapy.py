@@ -20,6 +20,6 @@ async def on_ready():
 @client.event
 async def on_message(message):
     if message.content.startswith('$'):
-      print("kate")
+      await client.say("kate")
 
 client.run('')
