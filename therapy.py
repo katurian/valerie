@@ -46,5 +46,5 @@ async def on_message(message):
 		response = chatbot.get_response('I would like to book a flight.')
 		await client.send_message(message.channel, response)
 
-client.run('NTU4MDYxNTU2ODQwMDA1NjUy.D3RXsA.tdLDmVflIcgeg7HZnDEr1oDtjz0')
+client.run('')
 
