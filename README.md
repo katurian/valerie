@@ -14,14 +14,13 @@
 #### 4. Create an application at https://discordapp.com/developers/applications/
 #### 5. Create a bot for said application in the bots section of your application's settings.
 #### 6. Copy the bot's token.
+#### 7. Replace CLIENT-TOKEN in therapy.py (the file you placed in cakechat/tools/) with your bot's token. For example:
   ```
   client.run('CLIENT-TOKEN')
   ```
-#### 7. Replace CLIENT-TOKEN in therapy.py (the file you placed in cakechat/tools/) with your bot's token. For example:
 
   ```
   client.run('NTYxMjkNTANjExODAMjU.XKAVw.VS')
- 
   ```
   
 #### 8. Go to the OAuth2 section of your bot's application settings.
