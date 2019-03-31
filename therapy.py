@@ -1,32 +1,27 @@
+import os
+import sys
+
 import discord
 import asyncio
 from discord.ext.commands import Bot
 from discord.ext import commands
 import platform
-import feedparser
-from chatterbot import ChatBot
-from chatterbot.trainers import ListTrainer
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+import argparse
+from collections import deque
+
+from cakechat.utils.env import init_theano_env
+
+init_theano_env()
+
+from cakechat.api.response import get_response
+from cakechat.config import INPUT_CONTEXT_SIZE, DEFAULT_CONDITION
+from cakechat.utils.telegram_bot_client import TelegramBot, AbstractTelegramChatSession
 
 
-bot = ChatBot(
-	'Rachel',
-	storage_adapter='chatterbot.storage.SQLStorageAdapter',
-	database_uri='sqlite:///database.sqlite3'
-)
-
-trainer = ListTrainer(bot)
-
-trainer.train([
-	'How are you?',
-	'I am good.',
-	'That is good to hear.',
-	'Thank you',
-	'You are welcome.',
-])
-
-
-
-client = Bot(description="cbt bot by Kat", command_prefix="", pm_help = False)
+client = Bot(description="cbt bot by Kat", command_prefix="!", pm_help = False)
 
 
 @client.event
@@ -36,15 +31,15 @@ async def on_ready():
 	print('Current Discord.py Version: {} | Current Python Version: {}'.format(discord.__version__, platform.python_version()))
 	print('--------')
 	print('Made by Kate Kulinski')
-	return await client.change_presence(game=discord.Game(name='Reading!'))
+	return await client.change_presence(game=discord.Game(name='Barbie Horse Adventures'))
 
 @client.event
 async def on_message(message):
-	if message.content.startswith('Rachel') or message.content.startswith('rachel') or message.content.startswith('rach'):
-		await client.send_message(message.channel, 'Hello')
-		msg = await client.wait_for_message(author=message.author)
-		response = chatbot.get_response('I would like to book a flight.')
+	if (message.author.bot == True):
+		return
+	if message.content.startswith('-'):
+		msg = [str(message.content)[1:]]
+		response = get_response(msg, DEFAULT_CONDITION)
 		await client.send_message(message.channel, response)
 
-client.run('')
-
+client.run('CLIENT-TOKEN')
