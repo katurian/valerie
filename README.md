@@ -2,9 +2,9 @@
 
 ## Prerequisites:
 
-### Python 3.6.2
-### Discord.py
-### Cakechat Library: https://github.com/lukalabs/cakechat
+#### Python 3.6.2
+#### Discord.py
+#### Cakechat Library: https://github.com/lukalabs/cakechat
 
 ## Directions
 
