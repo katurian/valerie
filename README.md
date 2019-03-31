@@ -26,6 +26,8 @@
 #### 8. Go to the OAuth2 section of your bot's application settings.
 #### 9. Do this:
 [Example](https://ibb.co/bzc6xTy)
+#### 10. Copy link below scope and add bot to your server.
+#### 11. Run therapy.py from inside cakechat/tools/
 
   
   
