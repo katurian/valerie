@@ -9,6 +9,7 @@ import platform
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+import argparse
 from collections import deque
 
 from cakechat.utils.env import init_theano_env
@@ -17,10 +18,11 @@ init_theano_env()
 
 from cakechat.api.response import get_response
 from cakechat.config import INPUT_CONTEXT_SIZE, DEFAULT_CONDITION
+from cakechat.utils.telegram_bot_client import TelegramBot, AbstractTelegramChatSession
 
 
 client = Bot(description="cbt bot by Kat", command_prefix="!", pm_help = False)
-context = deque(maxlen=INPUT_CONTEXT_SIZE)
+
 
 @client.event
 async def on_ready():
@@ -36,10 +38,6 @@ async def on_message(message):
 	if (message.author.bot == True):
 		return
 	if message.content.startswith('-'):
-		context.append(str(message.content)[1:].strip())
-		response = get_response(context, DEFAULT_CONDITION)
-		context.append(response)
+		msg = [str(message.content)[1:]]
+		response = get_response(msg, DEFAULT_CONDITION)
 		await client.send_message(message.channel, response)
-		task.cancel()
-
-client.run('CLIENT-TOKEN')
