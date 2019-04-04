@@ -41,3 +41,5 @@ async def on_message(message):
 		msg = [str(message.content)[1:]]
 		response = get_response(msg, DEFAULT_CONDITION)
 		await client.send_message(message.channel, response)
+		
+client.run('CLIENT-TOKEN')		
