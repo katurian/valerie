@@ -42,4 +42,4 @@ async def on_message(message):
 		await client.send_message(message.channel, response)
 
 
-client.run('NTYxMjk0NTA0NjExODA3MjU0.XKa4cA.8dGCuOI545Z-OFmo4cUKxcadE5Y')
+client.run('CLIENT-TOKEN')
