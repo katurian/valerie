@@ -39,6 +39,8 @@ async def on_message(message):
 		context.append(str(message.content)[1:].strip())
 		response = get_response(context, DEFAULT_CONDITION)
 		context.append(response)
+		await client.send_typing(message.channel)
+		time.sleep(5)
 		await client.send_message(message.channel, response)
 
 
