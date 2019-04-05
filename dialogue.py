@@ -40,7 +40,7 @@ async def on_message(message):
 		response = get_response(context, DEFAULT_CONDITION)
 		context.append(response)
 		await client.send_typing(message.channel)
-		await asyncio.sleep(2)
+		await asyncio.sleep(1)
 		await client.send_message(message.channel, response)
 
 
