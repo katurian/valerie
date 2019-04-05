@@ -40,8 +40,8 @@ async def on_message(message):
 		response = get_response(context, DEFAULT_CONDITION)
 		context.append(response)
 		await client.send_typing(message.channel)
-		time.sleep(5)
+		await asyncio.sleep(2)
 		await client.send_message(message.channel, response)
 
 
-client.run('CLIENT-TOKEN')
+client.run('NTYxMjk0NTA0NjExODA3MjU0.XKbfbw.S75QxcehvpYyqmHwNBH0bDI6z8o')
